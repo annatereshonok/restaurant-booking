@@ -1,7 +1,7 @@
 from django.urls import path
 from django.shortcuts import render
 from django.contrib.admin.views.decorators import staff_member_required
-from views import home, booking_page
+from .views import home, booking_page
 
 
 @staff_member_required
