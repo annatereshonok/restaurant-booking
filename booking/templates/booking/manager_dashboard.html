@@ -1,0 +1,77 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  ...
+</head>
+<body class="bg-[#F3E7D9] text-[#2A2A2A] font-sans min-h-screen">
+<header class="bg-[#295E70] text-white">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <h1 class="text-xl font-semibold">Manager · Bookings</h1>
+    <nav class="flex gap-3 text-sm opacity-90">
+      <a href="/" class="hover:underline">Site</a>
+      <a href="/admin/" class="hover:underline">Django Admin</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-6">
+
+  <div class="flex flex-wrap items-center gap-2 mb-4">
+    <button data-status="all" class="chip bg-white border border-[#295E70] text-[#295E70]">All</button>
+    <button data-status="pending"   class="chip bg-[#FFF3C4]">Pending</button>
+    <button data-status="confirmed" class="chip bg-[#CDECE1]">Confirmed</button>
+    <button data-status="seated"    class="chip bg-[#DDE6FF]">Seated</button>
+    <button data-status="completed" class="chip bg-[#E7E7E7]">Completed</button>
+    <button data-status="no_show"   class="chip bg-[#FFE0E0]">No-show</button>
+    <button data-status="canceled"  class="chip bg-[#F6D0D0]">Canceled</button>
+
+    <div class="ml-auto flex items-center gap-2 text-sm">
+      <input id="areaFilter" type="number" placeholder="Area ID" class="px-2 py-1 rounded border" />
+      <input id="tableFilter" type="number" placeholder="Table ID" class="px-2 py-1 rounded border" />
+      <button id="applyFilters" class="px-3 py-1 rounded bg-[#295E70] text-white">Filter</button>
+    </div>
+  </div>
+
+  <!-- Calendar -->
+  <section class="bg-white rounded-2xl shadow p-4 mb-6">
+    <div class="flex items-center justify-between mb-2">
+      <div class="flex items-center gap-2">
+        <button id="prevMonth" class="px-2 py-1 rounded border">‹</button>
+        <h2 id="monthLabel" class="text-lg font-semibold"></h2>
+        <button id="nextMonth" class="px-2 py-1 rounded border">›</button>
+      </div>
+      <div class="text-sm opacity-70">Dots show bookings; color = status</div>
+    </div>
+    <div id="calendarGrid" class="grid grid-cols-7 gap-2 text-sm"></div>
+  </section>
+
+  <!-- Day list -->
+  <section class="bg-white rounded-2xl shadow p-4">
+    <div class="flex items-center justify-between">
+      <h3 class="text-lg font-semibold">Bookings on <span id="dayLabel"></span></h3>
+      <div class="text-sm opacity-60" id="dayTotals"></div>
+    </div>
+    <div id="dayList" class="divide-y mt-2"></div>
+  </section>
+</main>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  window.MANAGER_CFG = {
+    API_LIST: "{% url 'api_manager_bookings_list' %}",
+    API_SET_STATUS: pk => "{% url 'api_manager_set_status' 0 %}".replace('/0/', `/${pk}/`),
+    API_STATUS_CHOICES:"{% url 'api_manager_status_choices' %}",
+    STATUS_COLORS: {
+      pending: "#FFF3C4",
+      confirmed: "#CDECE1",
+      seated: "#DDE6FF",
+      completed: "#E7E7E7",
+      no_show: "#FFE0E0",
+      canceled: "#F6D0D0"
+    }
+  };
+</script>
+<script src="{% static 'booking/js/manager_dashboard.js' %}"></script>
+</body>
+</html>

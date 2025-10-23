@@ -1,0 +1,7 @@
+Your reservation request has been received.
+
+Date & Time: {{ datetime_start }} — {{ datetime_end }}
+We’ll contact you shortly to confirm the booking.
+
+If you didn’t leave an email, our administrator will reach out by phone.
+Thank you for choosing us!

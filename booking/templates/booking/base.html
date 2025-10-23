@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include "booking/include/_head.html" %}
+  </head>
+  <body class="bg-[#FAE6D3] text-[#13313A] antialiased">
+    {% include "booking/include/_header.html" %}
+    <main id="content" class="overflow-x-hidden">
+      {% block content %}{% endblock %}
+    </main>
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'booking/js/nav.js' %}"></script>
+    <script src="{% static 'booking/js/menu-carousel.js' %}"></script>
+    <script src="{% static 'booking/js/auth_modal.js' %}" defer></script>
+    <script>
+      window.afterAuthContinue = function () {
+        window.location.href = "/booking/";
+      };
+    </script>
+    <script src="{% static 'booking/js/home_auth_gate.js' %}" defer></script>
+  </body>
+</html>

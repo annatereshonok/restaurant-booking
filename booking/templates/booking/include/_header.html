@@ -1,0 +1,44 @@
+{% load static %}
+<header class="absolute inset-x-0 top-0 z-30">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img src="{% static 'booking/img/logo/logo_hikari.svg' %}" alt="Hikari" class="h-6">
+    </a>
+
+    <nav class="hidden md:flex items-center gap-3">
+      <a href="#menu" class="px-5 py-2.5 rounded-full bg-[#F2BB3A] text-black font-semibold shadow hover:bg-[#ffcc4d] transition">
+        Delivery
+      </a>
+      <button type="button"
+          class="px-5 py-2.5 rounded-full bg-[#F2BB3A] text-black font-semibold shadow hover:bg-[#ffcc4d] transition"
+          data-reserve>
+        Reserve
+      </button>
+    </nav>
+
+    <button class="md:hidden p-2 rounded-lg bg-dark/70 text-white" data-open-nav>
+      <img src="{% static 'booking/img/icons/burger-menu.svg' %}" alt="menu" class="h-6 w-6">
+    </button>
+  </div>
+
+  <!-- Off-canvas -->
+  <div class="fixed inset-0 z-40 hidden" data-nav-panel>
+    <div class="absolute inset-0 bg-black/40" data-close-nav></div>
+    <div class="absolute right-0 top-0 h-full w-72 bg-peach shadow-2xl p-6">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-display text-3xl tracking-tight text-headings">HIKARI</span>
+        <button data-close-nav>
+          <img src="{% static 'booking/img/icons/close.svg' %}" alt="close" class="h-7 w-7">
+        </button>
+      </div>
+      <a href="#menu" class="block py-3">Menu</a>
+      <a href="#events" class="block py-3">Events</a>
+      <a href="#contacts" class="block py-3">Contacts</a>
+      <button type="button" class="mt-4 w-full px-5 py-2.5 rounded-full bg-yellow text-dark font-display shadow" data-reserve>
+        Reserve
+      </button>
+    </div>
+  </div>
+
+  {% include "booking/include/_auth_modal.html" %}
+</header>

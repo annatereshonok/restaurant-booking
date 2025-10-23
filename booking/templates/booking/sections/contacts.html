@@ -1,0 +1,60 @@
+{% load static %}
+<section id="contacts" class="relative font-sans w-screen mx-[calc(50%-50vw)]">
+  <div class="mx-[calc(50%-50vw)]">
+    <img
+      src="{% static 'booking/img/contacts/contacts_back.png' %}"  {# поменяй расширение если нужно: .webp/.jpg #}
+      alt="contacts background"
+      class="block w-screen h-auto object-contain select-none pointer-events-none"
+    >
+  </div>
+
+  <div class="absolute inset-0">
+    <div class="min-h-full flex items-center">
+      <div class="w-full grid md:grid-cols-[minmax(0,520px)_1fr] gap-6 md:gap-10 px-4 md:px-8">
+
+        <div class="text-white">
+          <h2 class="font-black text-3xl md:text-4xl mb-6 text-[#F2BB3A]">CONTACTS</h2>
+
+          <div class="space-y-8 text-lg leading-snug pl-10 md:pl-12">
+            <div>
+              <div class="font-semibold">Address</div>
+              <div>Bolshaya Nikitskaya 12, Moscow</div>
+            </div>
+
+            <div>
+              <div class="font-semibold">Hours</div>
+              <div>Mon–Thu: 12:00–22:00<br>Fri–Sun: 12:00–23:00</div>
+            </div>
+
+            <div>
+              <div class="font-semibold">Phone</div>
+              <div>+7 (900) 000-00-00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative flex items-center justify-center">
+          <img
+            src="{% static 'booking/img/icons/hand.svg' %}"
+            alt="hand"
+            class="absolute z-0 pointer-events-none select-none
+                   top-[35%] -translate-y-1/2 right-6 md:right-12
+                   w-[300px] sm:w-[360px] md:w-[420px] lg:w-[460px]"
+          />
+
+          <button
+            type="button"
+            data-reserve
+            class="relative z-10 rounded-full bg-[#F2BB3A] text-black font-black uppercase tracking-wide
+                   px-10 sm:px-12 md:px-14 lg:px-16
+                   py-4 sm:py-5 md:py-6
+                   text-xl sm:text-2xl md:text-3xl shadow"
+          >
+            Reserve a table now
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+Your reservation is confirmed!
+
+Table: {{ table }}
+Date & Time: {{ datetime_start }} — {{ datetime_end }}
+
+A QR code is attached to this email — please show it upon arrival.
+Add to calendar (if the attachment didn’t open): {{ ics_link }}
+
+Verification token: {{ token }}
+We look forward to seeing you!

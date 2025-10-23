@@ -1,0 +1,112 @@
+{% load static %}
+{% url 'api_auth_logout' as logout_url %}
+<!doctype html>
+<html lang="en">
+<head>
+  {% include "booking/include/_head.html" %}
+  <style>
+    .chip { border-radius: 9999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+  </style>
+</head>
+
+<body class="bg-[#F3E7D9] font-sans class=" data-cancel-template="{% url 'api_my_booking_cancel' pk=0 %}">
+
+  <header class="w-full text-white">
+    <div class="bg-[#F3E7D9]">
+      <div class="bg-[#295E70] max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="{% url 'home' %}" class="text-3xl font-extrabold tracking-wide text-[#F2BB3A]">HIKARI</a>
+
+        {% if user.is_authenticated %}
+          <form action="{% url 'api_auth_logout' %}" method="post" class="m-0">
+            {% csrf_token %}
+            <button type="submit"
+                    class="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition rounded-full px-3 py-2">
+              <img src="{% static 'booking/img/icons/login_icon.svg' %}" class="w-5 h-5" alt="">
+              <span class="hidden sm:inline">Logout</span>
+            </button>
+          </form>
+        {% else %}
+          <button type="button" data-auth-open="login" data-allow-skip="0"
+                  class="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition rounded-full px-3 py-2">
+            <img src="{% static 'booking/img/icons/login_icon.svg' %}" class="w-5 h-5" alt="">
+            <span class="hidden sm:inline">Sign in</span>
+          </button>
+          <button type="button" data-auth-open="register" data-allow-skip="1"
+                  class="hidden sm:inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 transition rounded-full px-3 py-2">
+            <span>Sign up</span>
+          </button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto">
+      <img src="{% static 'booking/img/logo/header_decor.png' %}"
+           alt="" class="block w-full h-auto object-contain object-bottom pointer-events-none select-none" />
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 pb-16">
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- PROFILE CARD -->
+      <div class="rounded-3xl shadow-xl p-8 lg:col-span-1 bg-white text-[#1b1f23]">
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow">
+              <img id="uiAvatar" src="{% static 'booking/img/icons/avatar_placeholder.svg' %}"
+                   class="w-12 h-12 object-contain" alt="">
+            </div>
+          </div>
+        </div>
+
+        <form id="profileForm" class="mt-6 space-y-4" enctype="multipart/form-data">
+          <div>
+            <label class="block text-sm mb-1 text-[#295E70]/80">First name</label>
+            <input name="first_name" class="w-full border rounded-xl px-3 py-2 bg-white" placeholder="First name">
+          </div>
+          <div>
+            <label class="block text-sm mb-1 text-[#295E70]/80">Last name</label>
+            <input name="last_name" class="w-full border rounded-xl px-3 py-2 bg-white" placeholder="Last name">
+          </div>
+          <div>
+            <label class="block text-sm mb-1 text-[#295E70]/80">Phone</label>
+            <input name="phone" class="w-full border rounded-xl px-3 py-2 bg-white" placeholder="+15551234567">
+          </div>
+          <!-- optional -->
+          <div class="hidden" id="favDishWrap">
+            <label class="block text-sm mb-1 text-[#295E70]/80">Favorite dish</label>
+            <input name="favorite_dish" class="w-full border rounded-xl px-3 py-2 bg-white" placeholder="Ramen / Sushi ...">
+          </div>
+          <div>
+            <label class="block text-sm mb-1 text-[#295E70]/80">Avatar</label>
+            <input type="file" name="avatar" accept="image/*" class="w-full bg-white rounded-xl p-2">
+          </div>
+
+          <button class="w-full bg-[#F2BB3A] hover:bg-[#d82022] text-white font-bold py-3 rounded-xl transition-all shadow-md"
+                  type="submit">
+            Save profile
+          </button>
+          <p class="text-sm mt-2 text-[#295E70]" id="profileMsg"></p>
+        </form>
+      </div>
+
+      <div class="lg:col-span-2">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-[#295E70] text-xl font-extrabold">My reservations</h3>
+          <a href="/booking/" class="text-[#295E70] font-semibold hover:underline">+ New reservation</a>
+        </div>
+
+        <nav id="resTabsNav" class="flex flex-wrap gap-2 mb-4"
+             aria-label="Reservation tabs">
+        </nav>
+
+        <div id="resTabsPanes" class="grid gap-4">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="{% static 'users/js/profile.js' %}?v={{ now|date:'U' }}"></script>
+</body>
+</html>

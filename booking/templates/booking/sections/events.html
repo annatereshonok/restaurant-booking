@@ -1,0 +1,52 @@
+{% load static %}
+<section id="events" class="relative py-10 bg-peach">
+  <h2 class="font-display font-black text-4xl md:text-5xl text-headings mb-2 pl-4 md:pl-8">
+    SPECIAL EVENTS
+  </h2>
+  <p class="text-[#13313A]/70 mb-6 pl-4 md:pl-8">
+    Moments worth sharing. Join us for special nights filled with taste, light, and laughter.
+  </p>
+
+  <div class="pl-4 md:pl-8 pr-4 md:pr-8">
+    <div class="grid md:grid-cols-2 gap-4 md:gap-6 md:h-[70vh] min-h-[520px]">
+
+      <a href="#"
+         class="relative rounded-2xl overflow-hidden shadow-card hover:shadow-lg transition h-[40vh] md:h-full">
+        <img src="{% static 'booking/img/events/event1.png' %}"
+             alt="Sake Tasting Night"
+             class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="absolute left-4 bottom-4">
+          <span class="font-display font-bold text-white text-xl md:text-2xl drop-shadow">
+            Sake Tasting Night
+          </span>
+        </div>
+      </a>
+
+      <div class="grid grid-rows-2 gap-4 md:gap-6 h-[40vh] md:h-full min-h-0">
+        <a href="#"
+           class="relative rounded-2xl overflow-hidden shadow-card hover:shadow-lg transition">
+          <img src="{% static 'booking/img/events/event2.png' %}"
+               alt="Hanami Night"
+               class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black/20"></div>
+          <div class="absolute left-3 bottom-3">
+            <span class="font-display font-bold text-white text-lg md:text-xl drop-shadow">Hanami Night</span>
+          </div>
+        </a>
+
+        <a href="#"
+           class="relative rounded-2xl overflow-hidden shadow-card hover:shadow-lg transition">
+          <img src="{% static 'booking/img/events/event3.png' %}"
+               alt="Ramen Workshop"
+               class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black/20"></div>
+          <div class="absolute left-3 bottom-3">
+            <span class="font-display font-bold text-white text-lg md:text-xl drop-shadow">Ramen Workshop</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

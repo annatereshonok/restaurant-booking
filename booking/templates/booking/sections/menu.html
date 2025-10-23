@@ -1,0 +1,37 @@
+{% load static %}
+<section id="menu" class="relative pb-10">
+  <h2 class="font-display text-4xl md:text-5xl text-headings mb-6 pl-4 md:pl-8">
+    MENU
+  </h2>
+
+  <div class="relative">
+    <div class="overflow-x-auto no-scrollbar" data-menu-track>
+      <ul class="flex gap-4 px-4 md:px-8 py-2 select-none" data-menu-list>
+
+        {% for dish in menu_items %}
+        <li class="shrink-0 w-[300px] md:w-[400px]">
+          <article class="bg-white rounded-2xl shadow-card overflow-hidden hover:shadow-md transition">
+            <div class="relative w-full">
+              <div class="pt-[128.75%]"></div>
+              <img
+                src="{% static dish.img %}"
+                alt="{{ dish.name }}"
+                class="absolute inset-0 w-full h-full object-cover"
+              >
+            </div>
+
+            <div class="p-4">
+              <h3 class="font-semibold text-lg">{{ dish.name }}</h3>
+              <div class="mt-1 text-sm text-[#13313A]/70">{{ dish.desc }}</div>
+              <div class="mt-3 font-bold text-headings">{{ dish.price }}</div>
+            </div>
+          </article>
+        </li>
+        {% empty %}
+        <li class="text-sm text-[#13313A]/70 px-4">No menu items yet.</li>
+        {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+</section>

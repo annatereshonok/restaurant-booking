@@ -1,0 +1,24 @@
+Django==5.2.7
+python-dotenv~=1.1.1
+djangorestframework~=3.16.1
+djangorestframework-simplejwt~=5.3.1
+psycopg2-binary>=2.9
+django-cors-headers>=4.3
+requests~=2.32.5
+
+celery~=5.5.3
+redis~=5.0
+django-celery-beat~=2.8.1
+pytz>=2024.1
+
+drf-spectacular>=0.27.0
+
+# prod / ci / tests
+gunicorn>=21.2
+flake8>=7.0
+pytest~=8.4.2
+pytest-django>=4.8
+pytest-cov>=4.1
+
+Pillow==10.4.0
+qrcode==7.4.2

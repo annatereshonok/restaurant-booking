@@ -1,0 +1,52 @@
+{% load static %}
+<div
+  class="fixed inset-0 z-[60] hidden"
+  id="authModal"
+  data-authenticated="{% if request.user.is_authenticated %}1{% else %}0{% endif %}"
+  data-api-register="/api/auth/register/"
+  data-api-login="/api/auth/login/"
+  data-booking-url="/booking/"
+>
+  <div class="absolute inset-0 bg-black/50" data-auth-close></div>
+
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] max-w-[520px] bg-white rounded-2xl p-6 shadow-2xl">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-display text-2xl text-headings" data-auth-title>Register</h3>
+      <button type="button" data-auth-close class="p-2 rounded-lg hover:bg-black/5">
+        <img src="{% static 'booking/img/icons/close.svg' %}" alt="close" class="w-5 h-5">
+      </button>
+    </div>
+
+    <!-- Alerts -->
+    <div id="authError" class="hidden mb-3 text-sm px-3 py-2 rounded-md bg-red/10 text-red"></div>
+
+    <!-- Register form -->
+    <form id="authRegister" class="space-y-3" novalidate>
+      <input type="text" name="name" placeholder="Name" class="w-full px-4 py-3 border rounded-xl" required>
+      <input type="tel" name="phone" placeholder="Phone" class="w-full px-4 py-3 border rounded-xl" required>
+      <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 border rounded-xl" required>
+      <input type="password" name="password" placeholder="Password" class="w-full px-4 py-3 border rounded-xl" required>
+      <button type="submit" class="w-full bg-yellow text-dark font-semibold rounded-xl py-3">
+        Create account & continue
+      </button>
+    </form>
+
+    <!-- Login form -->
+    <form id="authLogin" class="space-y-3 hidden" novalidate>
+      <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 border rounded-xl" required>
+      <input type="password" name="password" placeholder="Password" class="w-full px-4 py-3 border rounded-xl" required>
+      <button type="submit" class="w-full bg-yellow text-dark font-semibold rounded-xl py-3">
+        Sign in & continue
+      </button>
+    </form>
+
+    <div class="mt-4 flex items-center justify-between text-sm">
+      <button type="button" class="text-headings underline" data-toggle-auth>
+        Already have an account? Login
+      </button>
+      <button type="button" class="text-dark/70 underline" data-skip-auth>
+        Skip for now
+      </button>
+    </div>
+  </div>
+</div>

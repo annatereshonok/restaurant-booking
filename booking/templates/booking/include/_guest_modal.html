@@ -1,0 +1,38 @@
+{% load static %}
+<div class="fixed inset-0 z-[60] hidden" id="guestBookingModal">
+  <div class="absolute inset-0 bg-black/50" data-gb-close></div>
+
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] max-w-[520px] bg-white rounded-2xl p-6 shadow-2xl">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-display text-2xl text-[#295E70]">Your contacts</h3>
+      <button data-gb-close class="p-2 rounded-lg hover:bg-black/5">
+        <img src="{% static 'booking/img/icons/close.svg' %}" alt="close" class="w-5 h-5">
+      </button>
+    </div>
+
+    <p class="text-sm text-[#295E70]/80 mb-3">
+      We’ll send your reservation details and confirmation to this email (or phone).
+    </p>
+
+    <div id="gbSummary" class="text-sm bg-[#F3E7D9] rounded-xl p-3 mb-3 text-[#295E70]"></div>
+
+    <div id="gbError" class="hidden mb-3 text-sm px-3 py-2 rounded-md bg-red/10 text-red"></div>
+
+    <form id="guestBookingForm" class="space-y-3">
+      <input type="hidden" name="date">
+      <input type="hidden" name="start">
+      <input type="hidden" name="guests">
+      <input type="hidden" name="table_id">
+      <input type="hidden" name="duration">
+
+      <input type="text" name="name" placeholder="Name"  class="w-full px-4 py-3 border rounded-xl" required>
+      <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 border rounded-xl">
+      <input type="tel" name="phone" placeholder="Phone (optional)" class="w-full px-4 py-3 border rounded-xl">
+      <textarea name="comment" placeholder="Comment (optional)" rows="3" class="w-full px-4 py-3 border rounded-xl"></textarea>
+
+      <button class="w-full bg-[#F2BB3A] text-[#1b1f23] font-semibold rounded-xl py-3">
+        Send request
+      </button>
+    </form>
+  </div>
+</div>

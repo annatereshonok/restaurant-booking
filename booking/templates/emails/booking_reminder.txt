@@ -1,0 +1,4 @@
+Reminder of your reservation.
+
+Date & Time: {{ datetime_start }} — {{ datetime_end }}
+We’re looking forward to seeing you!

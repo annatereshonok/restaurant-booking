@@ -1,0 +1,31 @@
+{% load static %}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{% block title %}HIKARI — Japanese Soul Food{% endblock %}</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+  rel="stylesheet">
+<link rel="icon" href="{% static 'booking/img/logo/logo_hikari.svg' %}" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          yellow: '#F2BB3A',
+          red: '#F02D2F',
+          headings: '#025C6C',
+          dark: '#000000',
+          peach: '#FAE6D3',
+        },
+        fontFamily: {
+          sans: ['Montserrat', 'ui-sans-serif', 'system-ui'],
+          display: ['Montserrat', 'ui-sans-serif', 'system-ui'],
+        },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="{% static 'booking/css/custom.css' %}">
